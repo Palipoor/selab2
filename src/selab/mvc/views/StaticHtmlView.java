@@ -36,4 +36,6 @@ public class StaticHtmlView extends View {
         headers.put("Content-Type", "text/html");
         return headers;
     }
+
+
 }

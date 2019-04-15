@@ -1,7 +1,6 @@
 package selab.mvc.models.entities;
 
 import selab.mvc.models.Model;
-import sun.misc.Regexp;
 
 import java.util.regex.Pattern;
 

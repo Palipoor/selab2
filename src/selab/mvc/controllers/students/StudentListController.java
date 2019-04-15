@@ -1,5 +1,6 @@
 package selab.mvc.controllers.students;
 
+import com.sun.net.httpserver.HttpExchange;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import selab.mvc.controllers.Controller;
@@ -22,8 +23,14 @@ public class StudentListController extends Controller {
 
     @Override
     public View exec(String method, InputStream body) throws IOException {
+        System.out.println(method);
         JSONObject result = new JSONObject();
         result.put("students", new JSONArray(students.getAll()));
         return new JsonView(result);
+    }
+
+    @Override
+    public void handle(HttpExchange httpExchange) throws IOException {
+        super.handle(httpExchange);
     }
 }

@@ -25,7 +25,6 @@ public class AddStudentController extends Controller {
     public View exec(String method, InputStream body) throws IOException {
         if (!method.equals("POST"))
             throw new IOException("Method not supported");
-
         JSONObject input = readJson(body);
         Student student = new Student();
         student.setName(input.getString("name"));
