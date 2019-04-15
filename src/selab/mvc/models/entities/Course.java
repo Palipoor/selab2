@@ -3,6 +3,7 @@ package selab.mvc.models.entities;
 import selab.mvc.models.Model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.regex.Pattern;
 
 public class Course implements Model {
@@ -11,7 +12,7 @@ public class Course implements Model {
     private String startTime = null;
     private String endTime = null;
     private Weekday weekday;
-    private ArrayList<String> students = new ArrayList<String>();
+    private HashMap<String, Integer> students = new HashMap<>();
 
 
     @Override
@@ -62,14 +63,22 @@ public class Course implements Model {
     }
 
     public float getAverage() {
-        // TODO: Calculate and return the average of the points
+        float sum = 0;
+        int num = 0;
+        for (Integer grade :
+                students.values()) {
+            sum += grade.intValue();
+            num += 1;
+        }
+        if (num != 0)
+            return sum/num;
         return 0;
     }
 
     public String getStudents() {
         String output = "";
         for (String name :
-                students) {
+                students.keySet()) {
             output = output + name + ", ";
         }
         if (output.equals(""))
@@ -117,7 +126,7 @@ public class Course implements Model {
             return -1;
     }
 
-    public void addStudent(String name) {
-        students.add(name);
+    public void addStudent(String name, int grade) {
+        students.put(name, grade);
     }
 }

@@ -25,10 +25,12 @@ public class AddStudentToCourseController extends Controller {
         String studentNo = input.getString("studentNo");
         String courseNo = input.getString("courseNo");
         String points = input.getString("points");
+        int integerPoint = Integer.parseInt(points);
         Student student = this.dataContext.getStudents().get((studentNo));
         Course course = this.dataContext.getCourses().get((courseNo));
-        student.addCourse(course.getTitle());
-        course.addStudent(student.getName());
+
+        student.addCourse(course.getTitle(), integerPoint);
+        course.addStudent(student.getName(), integerPoint);
         return new JsonView(input);
 
         // TODO: Add required codes to associate the student with course
