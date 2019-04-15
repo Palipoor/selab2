@@ -2,6 +2,7 @@ package selab.mvc.models.entities;
 
 import selab.mvc.models.Model;
 
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class Course implements Model {
@@ -10,6 +11,7 @@ public class Course implements Model {
     private String startTime = null;
     private String endTime = null;
     private Weekday weekday;
+    private ArrayList<String> students = new ArrayList<String>();
 
 
     @Override
@@ -65,8 +67,14 @@ public class Course implements Model {
     }
 
     public String getStudents() {
-        // TODO: Return a comma separated list of student names
-        return "-";
+        String output = "";
+        for (String name :
+                students) {
+            output = output + name + ", ";
+        }
+        if (output.equals(""))
+            return "-";
+        return output;
     }
 
     /**
@@ -107,5 +115,9 @@ public class Course implements Model {
             return 0;
         else
             return -1;
+    }
+
+    public void addStudent(String name) {
+        students.add(name);
     }
 }

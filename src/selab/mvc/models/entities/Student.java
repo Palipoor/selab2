@@ -32,14 +32,14 @@ public class Student implements Model {
     }
 
     public String getCourses() {
-//        String output = "";
-//        for (String courseNo :
-//                courses) {
-//            output = output + courseNo + ", ";
-//        }
-//        if (output.equals(""))
+        String output = "";
+        for (String courseNo :
+                courses) {
+            output = output + courseNo + ", ";
+        }
+        if (output.equals(""))
             return "-";
-//        return output;
+        return output;
     }
 
     /**

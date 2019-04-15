@@ -28,6 +28,7 @@ public class AddStudentToCourseController extends Controller {
         Student student = this.dataContext.getStudents().get((studentNo));
         Course course = this.dataContext.getCourses().get((courseNo));
         student.addCourse(course.getTitle());
+        course.addStudent(student.getName());
         return new JsonView(input);
 
         // TODO: Add required codes to associate the student with course
