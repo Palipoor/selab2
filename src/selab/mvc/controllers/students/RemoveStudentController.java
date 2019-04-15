@@ -28,10 +28,10 @@ public class RemoveStudentController extends Controller {
 
         JSONObject input = readJson(body);
         String studentNo = input.getString("studentNo");
+        dataContext.getStudents().remove(studentNo);
 
         // TODO: Add codes for removing the student
-
-        return null;
+        return new JsonView (input);
     }
 
     @Override
