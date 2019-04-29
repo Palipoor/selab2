@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<project name="Hello World Project">
+    <path id="somthing"> <!-- Use it for classpath -->
+    </path>
+
+    <target name="compile">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="src" destdir="build">
+            <classpath>
+                <pathelement path="lib/json-20180813.jar"/>
+                <pathelement path="lib/junit-4.12.jar"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="make">
+        <mkdir dir="./build/jar"/>
+        <jar destfile="./build/jar/HOOOOO.jar" basedir="./build">
+            <zipgroupfileset dir="lib" includes="json-20180813.jar"/>
+            <manifest>
+                <attribute name = "Main-Class" value = "Main"/>
+            </manifest>
+        </jar>
+    </target>
+
+
+
+
+
+    <target name="test">
+        <junit fork="yes">
+            <classpath>
+                <pathelement location="lib/junit-4.12.jar"/>
+                <pathelement location="lib/hamcrest-all-1.3.jar"/>
+                <pathelement location="build"/>
+            </classpath>
+
+            <test name="tests.aTester"></test>
+            <formatter type="brief" usefile="false"/>
+        </junit>
+    </target>
+
+
+</project>
+
